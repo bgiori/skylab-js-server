@@ -29,21 +29,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: node_modules cache
+      - name: Cache Node Modules
         uses: actions/cache@v2
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v2
         with:
           node-version: '10'
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Run tests
+      # Also generates version
+      - name: Build
+        run: |
+          cd packages/node
+          yarn
+          cd ../..
+
+      - name: Run Tests
         run: yarn test
 
       - name: Configure Git User
