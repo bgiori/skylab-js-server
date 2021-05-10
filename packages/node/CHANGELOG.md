@@ -5,4 +5,4 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## 1.4.1 (2021-05-10)
 
-**Note:** Version bump only for package skylab-js-server-root
+**Note:** Version bump only for package @amplitude/skylab-js-server
